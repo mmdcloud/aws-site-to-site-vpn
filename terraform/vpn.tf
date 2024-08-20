@@ -1,7 +1,7 @@
 # Customer Gateway
 resource "aws_customer_gateway" "customer_gateway" {
   bgp_asn    = 65000
-  ip_address = "172.83.124.10"
+  ip_address = module.mumbai-resources.public_ip
   type       = "ipsec.1"
 
   tags = {
