@@ -24,5 +24,5 @@ variable "nv_azs" {
 variable "mumbai_azs" {
   type        = list(string)
   description = "Mumbai Availability Zones"
-  default     = ["asia-south-1a", "asia-south-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"]
 }
