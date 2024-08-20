@@ -2,13 +2,13 @@ resource "aws_vpc" "vpc" {
   cidr_block           = var.cidr
   enable_dns_hostnames = true
   tags = {
-    Name = "${name}_vpc"
+    Name = "${region_name}_vpc"
   }
 }
 
-resource "aws_subnet" "nv_subnets" {
+resource "aws_subnet" "subnets" {
   count             = length(var.subnets)
-  vpc_id            = aws_vpc.nv_vpc.id
+  vpc_id            = aws_vpc.vpc.id
   cidr_block        = element(var.subnets, count.index)
   availability_zone = element(var.azs, count.index)
   tags = {
