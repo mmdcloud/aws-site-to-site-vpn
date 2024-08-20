@@ -12,14 +12,14 @@ resource "aws_subnet" "subnets" {
   cidr_block        = element(var.subnets, count.index)
   availability_zone = element(var.azs, count.index)
   tags = {
-    Name = "${name}_subnet ${count.index + 1}"
+    Name = "${var.region_name}_subnet ${count.index + 1}"
   }
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "${name}_igw"
+    Name = "${var.region_name}_igw"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_route_table" "route_table" {
     gateway_id = aws_internet_gateway.igw.id
   }
   tags = {
-    Name = "${name}_route_table"
+    Name = "${var.region_name}_route_table"
   }
 }
 
